@@ -98,7 +98,7 @@ const Navbar = () => {
                                     color="black"
                                     sx={{ mr: 3, color: 'black', cursor: 'pointer' }}
                                 >
-                                    Follow Changes
+                                    Subscribe
                                 </Typography>
                             </Link>
                             <Link

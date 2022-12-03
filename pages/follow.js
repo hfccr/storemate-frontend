@@ -4,7 +4,7 @@ import { useAccount, useProvider, useSigner } from "wagmi";
 import Loader from "../components/Loader";
 import Alert from '@mui/material/Alert';
 import Container from '@mui/material/Container';
-import Nfts from "../components/Nfts";
+import Follow from "../components/Follow";
 
 const follow = () => {
     const { address, isConnected } = useAccount();
