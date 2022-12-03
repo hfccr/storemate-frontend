@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const COVALENT_BASE_URL = "https://api.covalenthq.com";
-const CHAIN_ID = "1";
+const CHAIN_ID = "5";
 
 export const useCovalentTokenBalances = (address, apiKey) => {
   const [balances, setBalances] = useState({

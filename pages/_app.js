@@ -3,6 +3,11 @@ import { useState, useEffect } from "react";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import dynamic from "next/dynamic";
+import { Toaster } from "react-hot-toast";
+
+const Navbar = dynamic(() => import("../components/Navbar"), {
+  ssr: false,
+});
 
 const fvmChain = {
   id: 31415,
@@ -34,9 +39,29 @@ const { chains, provider, webSocketProvider } = configureChains(
   ]
 );
 
+let client;
+if (typeof window !== "undefined") {
+  client = createClient({
+    autoConnect: true,
+    provider,
+    webSocketProvider,
+  });
+}
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <div suppressHydrationWarning>
+      {typeof window !== "undefined" && client && (
+        <WagmiConfig client={client}>
+          <Navbar suppressHydrationWarning />
+          <Component {...pageProps} />
+          <Toaster />
+        </WagmiConfig>
+      )}
+
+    </div>
+
+  );
 }
 
 export default MyApp

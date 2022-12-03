@@ -12,15 +12,20 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.10.16",
     "@mui/material": "^5.10.16",
     "@pushprotocol/restapi": "^0.2.2",
+    "@zondax/beryx": "^0.6.0",
+    "cids": "^1.1.9",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.6",
     "ethers": "^5.7.2",
     "next": "13.0.6",
     "react": "18.2.0",
+    "react-blockies": "^1.4.1",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0",
-    "wagmi": "^0.8.9"
+    "wagmi": "^0.8.9",
+    "web3.storage": "^4.4.0"
   }
 }
