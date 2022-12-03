@@ -47,6 +47,12 @@ export const useDeals = (cid) => {
         };
         if (cid && apiKey) {
             loadTransactions();
+        } else {
+            setDeals({
+                loading: false,
+                success: false,
+                error: true
+            })
         }
     }, [cid, apiKey]);
     return deals;

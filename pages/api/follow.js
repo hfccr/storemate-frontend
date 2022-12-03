@@ -1,6 +1,11 @@
 import * as PushAPI from '@pushprotocol/restapi';
 import * as ethers from 'ethers';
 import { arrayify } from 'ethers/lib/utils.js';
+import axios from "axios";
+import { getMessageBodyForAddress } from './../../utils/nft';
+
+const NFTPORT_BASE_URL = "https://api.nftport.xyz";
+const chain = "goerli";
 
 const PK = process.env.PUSH_CHANNEL_OWNER_PK;
 const Pkey = `0x${PK}`;
@@ -9,17 +14,18 @@ const addresses = [];
 
 const sendNotification = async (address) => {
     try {
+        const body = await getMessageBodyForAddress(address);
         const apiResponse = await PushAPI.payloads.sendNotification({
             signer,
             type: 3, // target
             identityType: 2, // direct payload
             notification: {
                 title: `Storemate IPFS Stats`,
-                body: `[sdk-test] notification BODY`
+                body: body
             },
             payload: {
                 title: `Storemate IPFS Stats`,
-                body: `sample msg body`,
+                body: body,
                 cta: 'https://storemate-frontend.vercel.app/',
                 img: 'https://icons8.com/icon/N6r8hCwyLGfA/disk'
             },

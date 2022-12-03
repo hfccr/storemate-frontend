@@ -80,8 +80,8 @@ export default function Nft({ nft }) {
 
                 </Stack>
                 {(fileLoading || metadataLoading) && <Box sx={{ textAlign: 'center' }}><CircularProgress /></Box>}
-                {fileError && <div>File IPFS error</div>}
-                {metadataError && <div>Metadata IPFS error</div>}
+                {fileError && <div>File IPFS not available</div>}
+                {metadataError && <div>Metadata IPFS not available</div>}
                 {fileSuccess && (<Typography variant="body2">
                     <Stack direction="row" spacing={2} alignItems="center" justifyContent="center" sx={{ margin: 2 }}>
                         <Typography sx={{ flexGrow: 1 }}>File</Typography>

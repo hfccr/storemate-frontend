@@ -10,8 +10,7 @@ import Typography from '@mui/material/Typography';
 import Nft from "./Nft";
 
 const Nfts = ({ address }) => {
-    const apiKey = process.env.NEXT_PUBLIC_NFT_PORT_API_KEY;
-    const { loading, error, success, data } = useNftPortNfts(address, apiKey);
+    const { loading, error, success, data } = useNftPortNfts(address);
     let nftsWithIpfs = [];
     if (success) {
         if (data.response === 'OK') {
