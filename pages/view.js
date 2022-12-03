@@ -6,7 +6,7 @@ import Alert from '@mui/material/Alert';
 import Container from '@mui/material/Container';
 import Nfts from "../components/Nfts";
 
-const view = () => {
+const View = () => {
     const { address, isConnected } = useAccount();
     return <Container sx={{ marginTop: 4 }}>
         {!isConnected && <Alert severity="warning">Connect Wallet To Continue</Alert>}
@@ -14,4 +14,4 @@ const view = () => {
     </Container>;
 };
 
-export default view;
+export default View;
