@@ -15,8 +15,31 @@ import Alert from '@mui/material/Alert';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import { CircularProgress } from '@mui/material';
 import { useCovalentTokenBalances } from '../hooks/useCovalent';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import { usePrepareContractWrite, useContractWrite } from 'wagmi'
+import { abi, address } from './contract';
 
 export default function Nft({ nft }) {
+    const [open, setOpen] = React.useState(false);
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const createBounty = () => {
+        const { config } = usePrepareContractWrite({
+            address: address,
+            abi: abi,
+            functionName: 'createBounty',
+        })
+        const { write } = useContractWrite(config)
+    };
     const { description, name, token_id: tokenId, contract, metadata, fileUrlIpfs, metadataUrlIpfs, contract_address: contractAddress } = nft;
     let contractName, contractSymbol, image;
     if (typeof contract === 'object') {
@@ -78,6 +101,21 @@ export default function Nft({ nft }) {
             </Box>
             )
             }
+            <Dialog open={open} onClose={handleClose}>
+                <DialogTitle>Create Bounty</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        This action will create a bounty for the CID metadata and file CIDs on FVM. The Storage provider will be able to claim the bounty if they successfully create and maintain a deal starting anytime in the future.
+                    </DialogContentText>
+                    <br />
+                    <br />
+                    <Typography variant="subtitle" sx={{ marginTop: 2 }}>Present at 0xC1F93b7Ddfa33352dA5e625AbAC53870141990D5 on wallaby testnet</Typography>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={createBounty}>Create Bounty</Button>
+                </DialogActions>
+            </Dialog>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     {typeof value !== 'undefined' && <>{`$${value}`}</>}
@@ -110,7 +148,7 @@ export default function Nft({ nft }) {
                 </Typography>}
             </CardContent>
             <CardActions>
-                <Button size="small">Create Preservation Bounty</Button>
+                <Button size="small" onClick={handleClickOpen}>Create Preservation Bounty</Button>
             </CardActions>
         </Card>
     );
