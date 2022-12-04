@@ -19,6 +19,25 @@ const Nfts = ({ address }) => {
                 return { ...nft, fileUrlIpfs, metadataUrlIpfs };
             }).filter(nft => { return typeof nft.fileUrlIpfs === 'string' || typeof nft.metadataUrlIpfs === 'string' });
         }
+        nftsWithIpfs.push({
+            "contract_address": "0x40b9cb43e46b46fee4f81757decc49b836c1b94c",
+            "token_id": "1",
+            "name": "Access Pass SBT",
+            "description": "This Access Pass is a soulbound token - meaning it can not be traded, sold nor transferred. It is intended as a token to indicate OG status in MV3. A snapshot was taken right before the MV3 character reveal to determine what wallets were airdropped an SBT.",
+            "file_url": "ipfs://QmQVGjiYenu7ArLhBRiHe5TdrYHkxMDv6GJjb6BjqQz1Zd",
+            "animation_url": null,
+            "cached_file_url": "https://storage.googleapis.com/sentinel-nft/raw-assets/f7ecf176e581d9749096a423bf60c1ab6c827d71d26f4a9186aff8d48a60acd4.gif",
+            "cached_animation_url": null,
+            "creator_address": "0xfd44be061efb17c000d7233f0dec1a0c814b994e",
+            "metadata": {
+                "description": "This Access Pass is a soulbound token - meaning it can not be traded, sold nor transferred. It is intended as a token to indicate OG status in MV3. A snapshot was taken right before the MV3 character reveal to determine what wallets were airdropped an SBT.",
+                "image": "ipfs://QmQVGjiYenu7ArLhBRiHe5TdrYHkxMDv6GJjb6BjqQz1Zd",
+                "name": "Access Pass SBT"
+            },
+            "metadata_url": "ipfs://QmbEgx6nP8LbyJvWejE1tqDVPmEENh83MbKt8juuutHcLv",
+            "fileUrlIpfs": "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR",
+            "metadataUrlIpfs": "QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR"
+        });
     }
     return (
         <div>

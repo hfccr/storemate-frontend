@@ -18,8 +18,8 @@ export const getIpfsLink = (url) => {
     if (typeof url === 'string') {
         const match = url.match(regex);
         if (Array.isArray(match) && match.length === 1 && typeof match[0] === 'string') {
-            // return match[0];
-            return 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR';
+            return match[0];
+            // return 'QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR';
         }
 
     }
