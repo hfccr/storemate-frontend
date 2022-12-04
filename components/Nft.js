@@ -32,15 +32,19 @@ export default function Nft({ nft }) {
     const handleClose = () => {
         setOpen(false);
     };
-    const createBounty = () => {
-        const { config } = usePrepareContractWrite({
-            address: address,
-            abi: abi,
-            functionName: 'createBounty',
-        })
-        const { write } = useContractWrite(config)
-    };
     const { description, name, token_id: tokenId, contract, metadata, fileUrlIpfs, metadataUrlIpfs, contract_address: contractAddress } = nft;
+    const { write } = useContractWrite({
+        mode: 'recklesslyUnprepared',
+        address: address,
+        abi: abi,
+        chainId: 31415,
+        functionName: 'createBounty',
+        args: [fileUrlIpfs, 2525],
+        onSuccess: () => { alert('Your bounty will be created soon!') }
+    });
+    const createBounty = () => {
+        write();
+    };
     let contractName, contractSymbol, image;
     if (typeof contract === 'object') {
         contractName = contract.name;
