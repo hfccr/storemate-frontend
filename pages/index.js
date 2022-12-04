@@ -29,10 +29,13 @@ export default function Home() {
             </a>
           </Link>
 
-          <a href="/follow" className={styles.card}>
-            <h2>Subscribe&rarr;</h2>
-            <p>Get detailed real time Push notifications if any of your asset's data is at risk</p>
-          </a>
+
+          <Link href="/follow" legacyBehavior>
+            <a className={styles.card}>
+              <h2>Subscribe&rarr;</h2>
+              <p>Get detailed real time Push notifications if any of your asset's data is at risk</p>
+            </a>
+          </Link>
         </div>
       </main>
 

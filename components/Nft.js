@@ -110,7 +110,7 @@ export default function Nft({ nft }) {
                 </Typography>}
             </CardContent>
             <CardActions>
-                <Button size="small">Create Bounty</Button>
+                <Button size="small">Create Preservation Bounty</Button>
             </CardActions>
         </Card>
     );
