@@ -13,6 +13,7 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import { CircularProgress } from '@mui/material';
+import { useCovalentTokenBalances } from '../hooks/useCovalent';
 
 export default function Nft({ nft }) {
     const { description, name, token_id: tokenId, contract, metadata, fileUrlIpfs, metadataUrlIpfs, contract_address: contractAddress } = nft;
@@ -28,6 +29,16 @@ export default function Nft({ nft }) {
     }
     const { loading: fileLoading, success: fileSuccess, error: fileError, data: fileUrlIpfsDeals } = useDeals(fileUrlIpfs);
     const { loading: metadataLoading, success: metadataSuccess, error: metadataError, data: metadataUrlIpfsDeals } = useDeals(metadataUrlIpfs);
+    const { loading: txLoading, success: txSuccess, error: txError, data: txData } = useCovalentTokenBalances(contractAddress, tokenId);
+    let value;
+    let receivedAt;
+    if (txSuccess) {
+        console.log(txData, 'txd');
+        try {
+            value = txData.data.items[0].nft_transactions[0].value;
+        } catch (e) {
+        }
+    }
     let filePins, filePinsInactive, metadataPins, metadataPinsInactive, fileActiveDeals, fileInactiveDeals, metadataActiveDeals, metadataInactiveDeals;
     if (fileSuccess) {
         const pins = fileUrlIpfsDeals.pins;
@@ -68,7 +79,7 @@ export default function Nft({ nft }) {
             }
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    {contractSymbol}
+                    {typeof value !== 'undefined' && <>{`$${value}`}</>}
                 </Typography>
                 <Stack direction="row" alignItems="flex-end" sx={{ marginBottom: 2 }}>
                     <Typography variant="h5" component="div">
@@ -99,7 +110,7 @@ export default function Nft({ nft }) {
 
             </CardContent>
             <CardActions>
-                <Button size="small">Learn More</Button>
+                <Button size="small">Create Bounty</Button>
             </CardActions>
         </Card>
     );

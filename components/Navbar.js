@@ -101,34 +101,6 @@ const Navbar = () => {
                                     Subscribe
                                 </Typography>
                             </Link>
-                            <Link
-                                href="/assign"
-                                passHref
-                                legacyBehavior
-                            >
-                                <Typography
-                                    id="create"
-                                    className=""
-                                    color="black"
-                                    sx={{ mr: 3, color: 'black', cursor: 'pointer' }}
-                                >
-                                    Assign
-                                </Typography>
-                            </Link>
-                            <Link
-                                href="/claim"
-                                passHref
-                                legacyBehavior
-                            >
-                                <Typography
-                                    id="create"
-                                    className=""
-                                    color="black"
-                                    sx={{ mr: 3, color: 'black', cursor: 'pointer' }}
-                                >
-                                    Claim
-                                </Typography>
-                            </Link>
                             <Button
                                 onClick={() => {
                                     if (isConnected) {
