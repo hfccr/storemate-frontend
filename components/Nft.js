@@ -11,6 +11,7 @@ import { useDeals } from '../hooks/useDeals';
 import PushPinIcon from '@mui/icons-material/PushPin';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import Alert from '@mui/material/Alert';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import { CircularProgress } from '@mui/material';
 import { useCovalentTokenBalances } from '../hooks/useCovalent';
@@ -91,8 +92,8 @@ export default function Nft({ nft }) {
 
                 </Stack>
                 {(fileLoading || metadataLoading) && <Box sx={{ textAlign: 'center' }}><CircularProgress /></Box>}
-                {fileError && <div>File IPFS not available</div>}
-                {metadataError && <div>Metadata IPFS not available</div>}
+                {fileError && <Alert severity='info'>File IPFS data not available</Alert>}
+                {metadataError && <Alert severity="info">Metadata IPFS data not available</Alert>}
                 {fileSuccess && (<Typography variant="body2">
                     <Stack direction="row" spacing={2} alignItems="center" justifyContent="center" sx={{ margin: 2 }}>
                         <Typography sx={{ flexGrow: 1 }}>File</Typography>
@@ -107,7 +108,6 @@ export default function Nft({ nft }) {
                         <Chip icon={<AssignmentIcon />} label={`${metadataActiveDeals}/${metadataActiveDeals + metadataInactiveDeals}`} size="small" />
                     </Stack>
                 </Typography>}
-
             </CardContent>
             <CardActions>
                 <Button size="small">Create Bounty</Button>
